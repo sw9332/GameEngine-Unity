@@ -190,6 +190,9 @@ public class UI_Manager : MonoBehaviour
 
     //-----------------------------------------------------------------------------------------------------------------
 
+    public GameObject Stage1_Background;
+    public GameObject Stage3_Background;
+
     public GameObject[] star = new GameObject[3];
 
     void StarManager() //별UI 관리.
@@ -213,6 +216,9 @@ public class UI_Manager : MonoBehaviour
             star[0].SetActive(true);
             star[1].SetActive(true);
             star[2].SetActive(true);
+
+            Stage1_Background.SetActive(true);
+            Stage3_Background.SetActive(false);
         }
     }
 
@@ -265,7 +271,7 @@ public class UI_Manager : MonoBehaviour
     //-------------------------------------------------------------------------------------------------------------------
 
     //Hp상점
-    public static int Hp_recovery_item; //Hp회복 아이템
+    public static int Hp_recovery_item = 5; //Hp회복 아이템
     public TMP_Text Hp_item_text;
 
     public GameObject buy_failure_UI;

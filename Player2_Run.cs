@@ -28,6 +28,9 @@ public class Player2_Run : MonoBehaviour
     private bool isBlinking = false; // 추가: 깜빡이는 중인지 여부
 
     public Animator Enemy_An;
+    public Animator Ghost1_An;
+    public Animator Ghost2_An;
+    public Animator Ghost3_An;
 
     public ParticleSystem Hp_item_effect;
 
@@ -51,6 +54,9 @@ public class Player2_Run : MonoBehaviour
         originalColor = GetComponent<Renderer>().material.color;
 
         Enemy_An.speed = 0;
+        Ghost1_An.speed = 0;
+        Ghost2_An.speed = 0;
+        Ghost3_An.speed = 0;
 
         HP_Effect_Stop();
 
@@ -135,11 +141,44 @@ public class Player2_Run : MonoBehaviour
             Enemy_An.speed = 1;
             Invoke("Bush_Stop", 0.8f);
         }
+
+        if(other.gameObject.tag == "유령1")
+        {
+            Ghost1_An.speed = 1;
+            Invoke("Ghost1_Stop", 1.8f);
+        }
+
+        if(other.gameObject.tag == "유령2")
+        {
+            Ghost2_An.speed = 1;
+            Invoke("Ghost2_Stop", 1.8f);
+        }
+
+        if(other.gameObject.tag == "유령3")
+        {
+            Ghost3_An.speed = 1;
+            Invoke("Ghost3_Stop", 5f);
+        }
     }
 
     void Bush_Stop()
     {
         Enemy_An.speed = 0;
+    }
+
+    void Ghost1_Stop()
+    {
+        Ghost1_An.speed = 0;
+    }
+
+    void Ghost2_Stop()
+    {
+        Ghost2_An.speed = 0;
+    }
+
+    void Ghost3_Stop()
+    {
+        Ghost3_An.speed = 0;
     }
 
     void Jump()

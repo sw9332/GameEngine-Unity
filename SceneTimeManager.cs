@@ -28,12 +28,9 @@ public class SceneTimeManager : MonoBehaviour
         BossDieAnimation4();
 
         yield return new WaitForSeconds(9.5f - 9);
-        BossDieAnimation5();
-
-        yield return new WaitForSeconds(12 - 8);
         StartCoroutine(FadeOut());
 
-        yield return new WaitForSeconds(15.5f - 12);
+        yield return new WaitForSeconds(11 - 9);
         SceneChange();
     }
 
