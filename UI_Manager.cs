@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Linq;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -78,15 +79,10 @@ public class UI_Manager : MonoBehaviour
 
     void InitUI()
     {
-        for(int i=0; i<Screen.resolutions.Length; i++)
-        {
-            if(Screen.resolutions[i].refreshRate == Screen.currentResolution.refreshRate) //현재 모니터 주사율만 표시.
-            {
-                resolutions.Add(Screen.resolutions[i]);
-            }
-        }
-
+        var sortedResolutions = Screen.resolutions.Where(res => res.refreshRate == Screen.currentResolution.refreshRate).OrderByDescending(res => res.width * res.height).ToList();
+        resolutions = sortedResolutions;
         resolutionDropdown.options.Clear();
+        optionNum = 0;
 
         foreach(Resolution item in resolutions)
         {
@@ -98,6 +94,7 @@ public class UI_Manager : MonoBehaviour
             {
                 resolutionDropdown.value = optionNum;
             }
+
             optionNum++;
         }
 
